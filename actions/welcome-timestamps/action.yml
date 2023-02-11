@@ -1,0 +1,5 @@
+name: Print Welcome Timestamps
+description: Print a welcome message and a few timestamps
+runs:
+  using: docker
+  image: Dockerfile
