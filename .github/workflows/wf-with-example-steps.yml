@@ -68,11 +68,10 @@ jobs:
       # Checks-out mp30028/wf-actions-tryout-with-params
       #- uses: mp30028/wf-actions-tryout-with-params/actions@main
       
-<<<<<<< HEAD
+
       #- name: Execute Welcome Timestamps Action
       #  uses: actions/welcome-timestamps@main
-=======
-      - name: Execute Welcome Timestamps Action
-        uses:  mp30028/tryout-workflows/actions/welcome-timestamps@main
 
->>>>>>> 0ddb602066c96bcce7dadccbc9c688df9d48cdd7
+      #- name: Execute Welcome Timestamps Action
+      #  uses:  mp30028/tryout-workflows/actions/welcome-timestamps@main
+
