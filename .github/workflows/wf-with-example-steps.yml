@@ -32,7 +32,7 @@ jobs:
         with:
           remote_username: ${{ secrets.REMOTE_USERNAME }}
           remote_password: ${{ secrets.REMOTE_PASSWORD }}
-          remote_path: ${{ secrets.REMOTE_PATH }}
+          remote_server: ${{ secrets.REMOTE_SERVER` }}
       
       - name: Make output directory
         run: mkdir ./wkflow-output
@@ -61,6 +61,9 @@ jobs:
       - name: Test Connectivity to a remote server using credentials stored in secrets
         run: curl -k sftp://${{ secrets.REMOTE_SERVER }} --user ${{ secrets.REMOTE_USERNAME }}:${{ secrets.REMOTE_PASSWORD }}
         
+
+      - name: Test Connectivity to a remote server using credentials assigned to variables
+        run: curl -k sftp://$remote_server --user $remote_username:$remote_password
         
         #run: curl -k sftp://{{ secrets.REMOTE_SERVER }}{{ secrets.REMOTE_FILEPATH }} --user {{ secrets.REMOTE_USERNAME }}:{{ secrets.REMOTE_PASSWORD }} -T {{ secrets.LOCAL_FILEPATH }} --ftp-create-dirs     
 
