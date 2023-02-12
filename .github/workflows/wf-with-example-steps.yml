@@ -69,7 +69,7 @@ jobs:
 #        run: curl -k sftp://$remote_server --user $remote_username:$remote_password
         
       - name: Output variable values
-        run: echo "$remote_server, $remote_username, $remote_password"
+        run: echo "${{ vars.remote_server }}, ${{ vars.remote_username }}, ${{ vars.remote_password }}"
         
         #run: curl -k sftp://{{ secrets.REMOTE_SERVER }}{{ secrets.REMOTE_FILEPATH }} --user {{ secrets.REMOTE_USERNAME }}:{{ secrets.REMOTE_PASSWORD }} -T {{ secrets.LOCAL_FILEPATH }} --ftp-create-dirs     
 
