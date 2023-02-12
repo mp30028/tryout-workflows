@@ -32,7 +32,7 @@ jobs:
         with:
           remote_username: ${{ secrets.REMOTE_USERNAME }}
           remote_password: ${{ secrets.REMOTE_PASSWORD }}
-          remote_server: ${{ secrets.REMOTE_SERVER` }}
+          remote_server: ${{ secrets.REMOTE_SERVER }}
       
       - name: Make output directory
         run: mkdir ./wkflow-output
