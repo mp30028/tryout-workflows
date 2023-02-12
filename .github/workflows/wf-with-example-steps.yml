@@ -8,10 +8,16 @@ on:
   pull_request:
     branches: [ "main" ]
     types: [opened, synchronize , closed]
-
+    
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+# Define some local variables
+env:
+  remote_username: "testuser"
+  remote_password: "D0N0tUse*009"
+  remote_server: "65.108.222.254"
+  
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job with a sequence of example-steps
@@ -29,13 +35,11 @@ jobs:
       
       #  Checks-out this repository under $GITHUB_WORKSPACE
       - uses: actions/checkout@v3
-        with:
+        #with:
           #remote_username: ${{ secrets.REMOTE_USERNAME }}
           #remote_password: ${{ secrets.REMOTE_PASSWORD }}
           #remote_server: ${{ secrets.REMOTE_SERVER }}
-          remote_username: "testuser"
-          remote_password: "D0N0tUse*009"
-          remote_server: "65.108.222.254"
+
       
       - name: Make output directory
         run: mkdir ./wkflow-output
@@ -64,12 +68,11 @@ jobs:
       - name: Test Connectivity to a remote server using credentials stored in secrets
         run: curl -k sftp://${{ secrets.REMOTE_SERVER }} --user ${{ secrets.REMOTE_USERNAME }}:${{ secrets.REMOTE_PASSWORD }}
         
-
-#      - name: Test Connectivity to a remote server using credentials assigned to variables
-#        run: curl -k sftp://$remote_server --user $remote_username:$remote_password
-        
       - name: Output variable values
-        run: echo "${{ vars.remote_server }}, ${{ vars.remote_username }}, ${{ vars.remote_password }}"
+        run: echo "$remote_server, $remote_username, $remote_password"
+        
+      - name: Test Connectivity to a remote server using credentials assigned to variables
+        run: curl -k sftp://$remote_server --user $remote_username:$remote_password
         
         #run: curl -k sftp://{{ secrets.REMOTE_SERVER }}{{ secrets.REMOTE_FILEPATH }} --user {{ secrets.REMOTE_USERNAME }}:{{ secrets.REMOTE_PASSWORD }} -T {{ secrets.LOCAL_FILEPATH }} --ftp-create-dirs     
 
